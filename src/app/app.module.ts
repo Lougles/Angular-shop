@@ -10,6 +10,7 @@ import { RecipeDetailComponent } from './recipes/recipe-detail/recipe-detail.com
 import { RecipeItemComponent } from './recipes/recipe-list/recipe-item/recipe-item.component';
 import { ShopingListComponent } from './shoping-list/shoping-list.component';
 import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.component';
+import {NgOptimizedImage} from "@angular/common";
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { ShopingEditComponent } from './shoping-list/shoping-edit/shoping-edit.c
   imports: [
     BrowserModule,
     AppRoutingModule,
+    NgOptimizedImage,
   ],
   providers: [],
   bootstrap: [AppComponent]
