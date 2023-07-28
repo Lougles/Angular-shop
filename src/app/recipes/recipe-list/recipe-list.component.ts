@@ -8,6 +8,7 @@ import {Recipe} from "../recipe.model";
 })
 export class RecipeListComponent implements OnInit{
   recepies: Recipe[] = [
+    new Recipe('A Test Recipe', 'This is simply test', 'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg'),
     new Recipe('A Test Recipe', 'This is simply test', 'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg')
   ];
   constructor() {
