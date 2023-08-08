@@ -7,7 +7,7 @@ import {Ingridient} from "../shared/ingridient.module";
   styleUrls: ['./shoping-list.component.css']
 })
 export class ShopingListComponent implements OnInit{
-  ingridients: Ingridient[] = [
+  ingredients: Ingridient[] = [
     new Ingridient('Apples', 5),
     new Ingridient('Tomatoes', 10),
   ];
