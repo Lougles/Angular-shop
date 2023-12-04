@@ -1,24 +1,28 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Ingredient} from "../shared/ingridient.module";
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
+import { Ingredient } from '../shared/ingridient.module';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.css'],
 })
-export class ShoppingListComponent implements OnInit{
+export class ShoppingListComponent implements OnInit {
   // @ViewChild('amountInput', {static: false})amountInput: ElementRef;
   ingredients: Ingredient[] = [
     new Ingredient('Apples', 5),
     new Ingredient('Tomatoes', 10),
   ];
-  constructor() {
-  }
+  constructor() {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
   onIngredientAdded(ingredient: Ingredient) {
-    this.ingredients.push(ingredient)
+    this.ingredients.push(ingredient);
   }
   // ngAfterViewInit() {
   //   console.log(this.amountInput);
