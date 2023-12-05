@@ -3,6 +3,7 @@ import {
   OnInit,
 } from '@angular/core';
 import { Ingredient } from '../shared/ingridient.module';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
@@ -10,23 +11,13 @@ import { Ingredient } from '../shared/ingridient.module';
   styleUrls: ['./shopping-list.component.css'],
 })
 export class ShoppingListComponent implements OnInit {
-  // @ViewChild('amountInput', {static: false})amountInput: ElementRef;
-  ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-  ];
-  constructor() {}
+  ingredients: Ingredient[] = [];
+  constructor(private readonly shoppingListService: ShoppingListService) {}
 
-  ngOnInit() {}
-  onIngredientAdded(ingredient: Ingredient) {
-    this.ingredients.push(ingredient);
+  ngOnInit() {
+    this.ingredients = this.shoppingListService.getIngredients();
   }
-  // ngAfterViewInit() {
-  //   console.log(this.amountInput);
-  //   // Access child properties or methods here
-  //   if (this.amountInput) {
-  //     // Do something with the child component or element
-  //     console.log(this.amountInput.nativeElement);
-  //   }
-  // }
+  onIngredientAdded(ingredient: Ingredient) {
+    this.shoppingListService.addNewIngredient(ingredient);
+  }
 }
