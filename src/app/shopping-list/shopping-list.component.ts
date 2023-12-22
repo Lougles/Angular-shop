@@ -1,31 +1,24 @@
-import {AfterViewInit, Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {Ingredient} from "../shared/ingridient.module";
+import {
+  Component,
+  OnInit,
+} from '@angular/core';
+import { Ingredient } from '../shared/ingridient.module';
+import { ShoppingListService } from './shopping-list.service';
 
 @Component({
   selector: 'app-shopping-list',
   templateUrl: './shopping-list.component.html',
-  styleUrls: ['./shopping-list.component.css']
+  styleUrls: ['./shopping-list.component.css'],
 })
-export class ShoppingListComponent implements OnInit{
-  // @ViewChild('amountInput', {static: false})amountInput: ElementRef;
-  ingredients: Ingredient[] = [
-    new Ingredient('Apples', 5),
-    new Ingredient('Tomatoes', 10),
-  ];
-  constructor() {
-  }
+export class ShoppingListComponent implements OnInit {
+  ingredients: Ingredient[];
+  constructor(private readonly shoppingListService: ShoppingListService) {}
 
   ngOnInit() {
+    this.ingredients = this.shoppingListService.getIngredients();
+    this.shoppingListService.ingredientsChanged
+      .subscribe((ingredients: Ingredient[]) => {
+        this.ingredients = ingredients
+      })
   }
-  onIngredientAdded(ingredient: Ingredient) {
-    this.ingredients.push(ingredient)
-  }
-  // ngAfterViewInit() {
-  //   console.log(this.amountInput);
-  //   // Access child properties or methods here
-  //   if (this.amountInput) {
-  //     // Do something with the child component or element
-  //     console.log(this.amountInput.nativeElement);
-  //   }
-  // }
 }
