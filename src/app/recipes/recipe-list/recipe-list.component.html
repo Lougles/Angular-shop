@@ -6,11 +6,17 @@
 <hr />
 <div class="row">
   <div class="col-xs-12">
-    <app-recipe-item
-      *ngFor="let recipeEl of recipes"
-      [routerLink]="['/recipes', recipeEl.id]"
-    >
-    </app-recipe-item>
+    <div class='list-group'>
+      <a
+        [routerLink]="['/recipes', recipeEl.id]"
+        *ngFor="let recipeEl of recipes"
+        href='#'
+        class='list-group-item'
+      >
+        {{ recipeEl.name }}
+      </a>
+    </div>
   </div>
+  <router-outlet></router-outlet>
 </div>
 <!--[recipe]="recipeEl"-->
