@@ -1,6 +1,7 @@
 import {
   Component,
-  ElementRef, OnInit,
+  ElementRef,
+  OnInit,
   ViewChild,
 } from '@angular/core';
 import { Ingredient } from '../../shared/ingridient.module';
@@ -17,16 +18,16 @@ export class ShoppingEditComponent implements  OnInit{
 
   constructor(private shoppingListService: ShoppingListService) {
   }
-  ngOnInit() {
+  ngOnInit(): void {
   }
-  onClear() {
+  onClear(): void {
     this.nameInputRef.nativeElement.value = '';
     this.amountInputRef.nativeElement.value = '';
   }
-  onAddItem() {
+  onAddItem(): void {
     const ingName = this.nameInputRef.nativeElement.value;
     const ingAmount = this.amountInputRef.nativeElement.value;
-    const newIngredient = new Ingredient(ingName, ingAmount);
+    const newIngredient: Ingredient = new Ingredient(ingName, ingAmount);
     this.shoppingListService.addNewIngredient(newIngredient);
   }
 }

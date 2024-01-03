@@ -5,8 +5,14 @@
     </div>
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
-        <li><a href="#" (click)="onSelect('recipe')">Recipe</a></li>
-        <li><a href="#" (click)="onSelect('list')">Shopping List</a></li>
+        <li>
+          <a routerLink="/recipe"
+          >Recipe</a>
+        </li>
+        <li>
+          <a routerLink="/shopping-list"
+          >Shopping List</a>
+        </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li class="dropdown" appDropdown>
@@ -21,4 +27,5 @@
       </ul>
     </div>
   </div>
+  <router-outlet></router-outlet>
 </nav>
