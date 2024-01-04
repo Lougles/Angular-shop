@@ -38,6 +38,10 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
+  public getRecipe(id: number): Recipe {
+    return this.recipes.find((item: Recipe): boolean => item.id === id);
+  }
+
   addIngredientsToShoppingList(ingredients: Ingredient[]): void {
     this.shoppingListService.addIngredients(ingredients);
   }

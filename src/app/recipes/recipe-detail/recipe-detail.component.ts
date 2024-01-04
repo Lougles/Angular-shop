@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Recipe } from '../recipe.model';
 import { RecipeService } from '../recipe.service';
-import { ActivatedRoute, Data } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,14 +9,17 @@ import { ActivatedRoute, Data } from '@angular/router';
   styleUrls: ['./recipe-detail.component.css'],
 })
 export class RecipeDetailComponent implements OnInit{
-  @Input() recipe: Recipe;
+  recipe: Recipe;
+  id: number;
+
   protected open = open;
-  recipeId: number;
   constructor(private recipeService: RecipeService,
               private route: ActivatedRoute) {}
   ngOnInit() {
-    this.route.params.subscribe((data: Data): void => {
-      this.recipeId = data['id'];
+    const id = this.route.snapshot.params['id'];
+    this.route.params.subscribe((params: Params): void => {
+      this.id = +params['id'];
+      this.recipe = this.recipeService.getRecipe(this.id);
     });
   }
 
