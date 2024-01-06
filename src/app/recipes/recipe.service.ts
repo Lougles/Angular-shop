@@ -7,9 +7,10 @@ import { ShoppingListService } from '../shopping-list/shopping-list.service';
   providedIn: 'root',
 })
 export class RecipeService {
-  recipeSelected = new EventEmitter<Recipe>();
+  recipeSelected: EventEmitter<Recipe> = new EventEmitter<Recipe>();
   private recipes: Recipe[] = [
     new Recipe(
+      1,
       'Ratatouille',
       'A super tasty ratatouille',
       'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe.jpg',
@@ -19,6 +20,7 @@ export class RecipeService {
       ]
     ),
     new Recipe(
+      2,
       'Fried potato',
       'What else you need to eat?',
       'https://static01.nyt.com/images/2023/03/19/multimedia/SS-Oven-Roasted-Chicken-Shawarma-phmt/SS-Oven-Roasted-Chicken-Shawarma-phmt-articleLarge.jpg?w=1280&q=75',
@@ -36,7 +38,11 @@ export class RecipeService {
     return this.recipes.slice();
   }
 
-  addIngredientsToShoppingList(ingredients: Ingredient[]) {
+  public getRecipe(id: number): Recipe {
+    return this.recipes.find((item: Recipe): boolean => item.id === id);
+  }
+
+  addIngredientsToShoppingList(ingredients: Ingredient[]): void {
     this.shoppingListService.addIngredients(ingredients);
   }
 }
