@@ -11,13 +11,12 @@ export class RecipeEditComponent implements OnInit{
   editMode: boolean = false;
   constructor(private route: ActivatedRoute) {
   }
-  ngOnInit() {
+  ngOnInit(): void {
     this.route.params
       .subscribe(
-        (params: Params) => {
+        (params: Params): void => {
           this.id = +params['id'];
           this.editMode = params['id'] === undefined;
-          console.log(this.editMode);
         }
       )
   }
