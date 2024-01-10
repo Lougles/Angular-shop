@@ -33,4 +33,5 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
   providers: [],
   bootstrap: [AppComponent],
 })
+
 export class AppModule {}
